@@ -1,4 +1,5 @@
 import Category from '../models/categoryModel.js'
+import Product from '../models/productModel.js'
 import asyncHandler from 'express-async-handler'
 import mongoose from 'mongoose'
 
@@ -20,15 +21,15 @@ export const getCategoryById  = asyncHandler(async(req, res) => {
 })
 
 export const postCategory = asyncHandler(async(req,res)=>{
-    console.log(req.body)
+    console.log(req.body.name)
     const category = new Category({
         name: req.body.name
     })
     try {
         const newCategory = await category.save()
         res.json(newCategory)
-    } catch {
-        throw new Error('Category not created')
+    } catch(err) {
+        throw Error(err)
     }
 })
 
@@ -54,7 +55,10 @@ export const deleteCategory = asyncHandler(async(req,res)=>{
     var id = mongoose.Types.ObjectId(req.query.id)
     try {
         category = await Category.findById(id)
-        await category.remove()
+        var query = {category: id}
+        const test = await Product.findOne({category: id})
+        console.log(test)
+        // await category.remove()
         res.json({"Result":"Removed"})
     } catch {
         if(category==null){

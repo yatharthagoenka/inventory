@@ -25,7 +25,6 @@ export const postProduct = asyncHandler(async(req,res)=>{
     const product = new Product({
         name: req.body.name,
         price: req.body.price,
-        warranty: req.body.warranty,
         availability: req.body.availability,
         category: req.body.category
     })
@@ -45,7 +44,6 @@ export const editProduct = asyncHandler(async(req,res)=>{
         product.name = (req.body.name)?req.body.name:product.name
         product.price = (req.body.price)?req.body.price:product.price
         product.availability = (req.body.availability)?req.body.availability:product.availability
-        product.warranty = (req.body.warranty)?req.body.warranty:product.warranty
         product.category = (req.body.category)?req.body.category:product.category
         await product.save()
         res.json(product)

@@ -3,6 +3,7 @@ import express from 'express'
 const router = express.Router()
 import bodyParser from "body-parser";
 var jsonParser = bodyParser.json()
+import verifyToken from '../middleware/auth.js'
 
 router.route('/').get(getCategories)
 

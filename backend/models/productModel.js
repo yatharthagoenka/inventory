@@ -9,10 +9,6 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
-    warranty: {
-        type: String,
-        required: true,
-    },
     availability: {
         type: Number,
         required: true

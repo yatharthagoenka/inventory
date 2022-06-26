@@ -56,9 +56,9 @@ export const deleteCategory = asyncHandler(async(req,res)=>{
     try {
         category = await Category.findById(id)
         var query = {category: id}
-        const test = await Product.findOne({category: id})
+        const test = await Product.deleteMany(query)
         console.log(test)
-        // await category.remove()
+        await category.remove()
         res.json({"Result":"Removed"})
     } catch {
         if(category==null){

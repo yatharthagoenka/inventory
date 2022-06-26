@@ -29,7 +29,7 @@ export default function AddCat() {
     )
 
     const deleteCategory=(id)=>{
-        axios.delete("http://localhost:3000/product/delete",{params: {id: id}}  
+        axios.delete("http://localhost:3000/category/delete",{params: {id: id}}  
         )
         .then(res => {
             window.location.reload(false);
